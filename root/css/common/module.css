@@ -1,0 +1,292 @@
+@charset "UTF-8";
+
+/*/////////////////////////////////////////////////////////////
+SITENAME
+
+Copyright (C) KAYAC Inc. All Rights Reserved.
+------------------------------------------------------------
+[Module] 
+	1. Common Elements
+	2. Common Module
+	80. Lightbox
+	90. Others
+	99. Clearfix
+		
+//////////////////////////////////////////////////////////////*/
+
+/* ------------------------------------------------------------
+	1. Common Elements
+------------------------------------------------------------ */
+
+/* Title
+------------------------------------------------- */
+.ttl01 {
+	margin-bottom: 10px;
+	font-size: 200%;
+}
+
+.ttl02 {
+	margin-bottom: 10px;
+	font-size: 154%;
+}
+
+.ttl03 {
+	margin-bottom: 10px;
+	font-size: 124%;
+}
+
+/* Link
+------------------------------------------------- */
+
+/* pagetop */
+p.goPageTop {
+	margin-top: 40px;
+	text-align: right;
+}
+
+/* external icon */
+a.exwin {
+	padding-right: 12px;
+	background: url(/img/common/ico_external.gif) no-repeat 100% 50%;
+}
+
+/* viewMore */
+p.viewMore {
+
+}
+
+/* List
+------------------------------------------------- */
+
+/* 箇条書き */
+ul.listItemized li {
+	padding-left: 10px;
+	background: url(/img/common/ico_itemized.gif) no-repeat 3px 0.6em;
+}
+
+/* 注釈 */
+ul.listNote li {
+	padding-left: 1em;
+	text-indent: -1em;
+}
+
+/* Form */
+ul.listSelect {
+	list-style: none;
+}
+
+ul.listSelect li {
+	margin-bottom: 3px;
+}
+
+ul.listSelect select,
+ul.listSelect input {
+	margin: 0 3px;
+}
+
+/* ------------------------------------------------------------
+	2. Common Module
+------------------------------------------------------------ */
+
+/* Form
+------------------------------------------------- */
+table.tblInput {
+	width: 100%;
+}
+
+table.tblInput th {
+	width: 120px;
+	padding: 10px;
+	border: 1px solid #fff;
+	background: #ddd;
+	vertical-align: top;
+}
+
+table.tblInput td {
+	padding: 10px;
+	border: 1px solid #fff;
+	background: #eee;
+}
+
+/* module */
+table.tblInput input.textbox,
+table.tblInput textarea {
+	width: 99%;
+	border: 1px solid #ccc;
+}
+
+table.tblInput input.error,
+table.tblInput textarea.error {
+	background-color: #fcc;
+}
+
+table.tblInput p.required {
+	color: #c00;
+	font-size: 85%;
+	font-weight: normal;
+}
+
+table.tblInput p.note {
+	margin-top: 3px;
+	color: #999;
+	font-size: 85%;
+}
+
+table.tblInput p.error {
+	margin-top: 3px;
+	padding-left: 15px;
+	background: url(/img/common/ico_error.gif) no-repeat 0 50%;
+	color: #f00;
+	font-size: 85%;
+}
+
+/* Table
+------------------------------------------------- */
+table.tblData {
+	border: 2px solid #999;
+}
+
+table.tblData caption {
+	padding-bottom: 3px;
+	font-weight: bold;
+}
+
+table.tblData th {
+	padding: 3px 10px;
+	border: 1px solid #999;
+	border-bottom-width: 2px;
+	background: #ccc;
+	font-weight: bold;
+	text-align: center;
+}
+
+table.tblData td {
+	padding: 3px 10px;
+	border: 1px solid #999;
+	text-align: center;
+}
+
+table.tblData tr.even td {
+	background: #eee;
+}
+
+/* Pager
+------------------------------------------------- */
+ul.navPager {
+	margin: 20px 0;
+	text-align: center;
+}
+
+ul.navPager li {
+	display: inline;
+	margin: 0 5px;
+}
+
+ul.navPager li.current {
+	font-weight: bold;
+}
+
+/* ------------------------------------------------------------
+	80. Lightbox
+------------------------------------------------------------ */
+
+div#lbBack {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	opacity: 0.5;
+}
+
+div#lbWrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 200;
+	width: 100%;
+	padding-top: 100px;
+}
+
+div#lbContent {
+	position: relative;
+	width: 650px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 5px solid #666;
+	background: #fff;
+	text-align: left;
+}
+
+div#lbContent p.btnClose {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+
+div#lbContent h2 {
+	margin-bottom: 10px;
+}
+
+/* ------------------------------------------------------------
+	90. Others
+------------------------------------------------------------ */
+
+/* for Voice Browser */
+.hidden {
+	position: absolute;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+/* Noscript Message */
+p#msgNoscript {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	width: 100%;
+	padding: 5px 0;
+	border-top: 1px solid #f00;
+	border-bottom: 1px solid #f00;
+	background: #fcc;
+	color: #f00;
+	line-height: 1.2;
+	text-align: center;
+	opacity: 0.7;
+}
+
+/* ------------------------------------------------------------
+	99. Clearfix
+------------------------------------------------------------ */
+
+.group:after {
+	content: ".";
+	display: block;
+	clear: both;
+	height: 0;
+	visibility: hidden;
+}
+
+.group {
+	display: inline-block;
+}
+
+/* exclude MacIE5 \*/
+* html .group {
+	height: 1%;
+}
+
+.group{
+	display: block;
+}
+/* end: exclude MacIE5 */
