@@ -16,6 +16,14 @@ register schema => sub {
     Inamena::Schema->connect(@$conf);
 };
 
+# shortcut for resultset
+for my $table (qw/Keyword Comment/) {
+    register $table => sub {
+        shift->get('schema')->resultset($table);
+    };
+}
+
+
 register_namespaces 'API' => 'Inamena::API';
 
 1;

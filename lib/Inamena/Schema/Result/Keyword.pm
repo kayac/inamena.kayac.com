@@ -47,8 +47,8 @@ sub insert {
     my $self = shift;
 
     my $now = DateTime->now;
-    $self->created_date($now);
     $self->updated_date($now);
+    $self->created_date($now);
 
     $self->next::method(@_);
 }

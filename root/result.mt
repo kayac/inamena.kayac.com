@@ -1,4 +1,5 @@
-? my $result = $c->stash->{result};
+? my $result  = $c->stash->{result};
+? my $keyword = $c->stash->{keyword};
 
 ? extends 'common/base'
 
@@ -11,9 +12,9 @@
 <h2>否めないコメントをつけたいキーワードを入力してください。</h2>
 <p>例：窪塚洋介、草なぎ剛、ドッペルゲンガー</p>
 
-<form method="post" action="<?= $c->uri_for('/') ?>">
+<form id="form" method="post" action="<?= $c->uri_for('/') ?>">
   <input id="formTxt" name="q" type="text" value="<?= $result->{title} ?>" />
-  <img src="<?= $c->uri_for('/img/btn_search.png') ?>" alt="検索"  width="135" height="70" class="btn" onclick="$('form').submit()" />
+  <input type="image" src="<?= $c->uri_for('/img/btn_search.png') ?>" alt="検索" width="135" height="70" class="btn" />
 </form>
 <!--/#formBox--></div>
 
@@ -32,19 +33,31 @@
 
 <p><?= raw_string $result->{body} ?></p>
 
+? if ($keyword and $keyword->comments->count) {
 <p class="but">…しかし、</p>
-<ul id="episode"><li></li><li>天才の性なのか最近奇行が多い気がする</li><li>最近愛国者代表のようになっている</li></ul>
+<ul id="episode">
+? for my $comment ($keyword->comments) {
+  <li><?= $comment->body ?></li>
+? }
+</ul>
 <p class="but">ことは否めない。</p>
-
+? }
 <!--/#detailBox--></div>
 
-
-<ul class="blogTag"><li><img src="/img/subtit_blog.png" alt="この結果をブログに張る" width="167" height="14" /><input type="text" value="&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;イチローの否めないエピソード【いなめなヶ崎】&lt;/a&gt;" /></li>
+<ul class="blogTag">
+  <li>
+    <img src="/img/subtit_blog.png" alt="この結果をブログに張る" width="167" height="14" />
+    <input type="text" value="<?= $c->stash->{link} ?>" />
+  </li>
 </ul>
 
 <div id="addEpisode">
 <h3><img src="/img/subtit_comment.png" alt="否めないコメントをつける" width="189" height="15" /></h3>
-<p>…しかし、<input name="" type="text" id="addEpisodeTxt" /><input name="imageField" type="image" src="/img/btn_comment.png" alt="ことは否めない。" class="btn" width="196" height="50" /></p>
+
+<form method="post">
+<p>…しかし、<?= raw_string form->input('comment') ?>
+  <input name="imageField" type="image" src="/img/btn_comment.png" alt="ことは否めない。" class="btn" width="196" height="50" /></p>
+
 <!--/addEpisode--></div>
 
 <!--/#detail--></div>
@@ -55,7 +68,7 @@
 
 <div id="amazon">
 
-<h2>“<strong>イチロー</strong>”に関連があるということは否めないアイテム</h2>
+<h2>“<strong><?= $result->{title} ?></strong>”に関連があるということは否めないアイテム</h2>
 
 <div class="amazonBox first">
 <ul class="amazonImage"><li><a href="アマゾンリンク" class="external"><img src="" alt="商品名" width="150" height="150" /></a></li>
