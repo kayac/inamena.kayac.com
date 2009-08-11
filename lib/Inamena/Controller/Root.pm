@@ -1,5 +1,5 @@
 package Inamena::Controller::Root;
-use Ark 'Controller';
+use Ark 'Controller::Form';
 
 has '+namespace' => default => '';
 
@@ -20,7 +20,7 @@ sub error_handler :Private {
     $c->error([]);
 }
 
-sub index :Path {
+sub index :Path :Form('Inamena::Form::Search') {
     my ($self, $c) = @_;
 }
 

@@ -27,3 +27,6 @@ Copyright (C) KAYAC Inc. All Rights Reserved.
 
 /* hoge
 ------------------------------------------------- */
+div#formBox p.error {
+    color: #f30000;
+}

@@ -7,8 +7,13 @@
 <h2>否めないコメントをつけたいキーワードを入力してください。</h2>
 <p>例：窪塚洋介、草なぎ剛、ドッペルゲンガー</p>
 
-<input name="" type="text" id="formTxt" /><input name="" type="image" src="/img/btn_search.png" alt="検索" width="135" height="70" class="btn" />
-
+<form id="form" method="get" action="<?= $c->uri_for('/search') ?>">
+  <?= raw_string form->input('q') ?>
+  <img src="<?= $c->uri_for('/img/btn_search.png') ?>" alt="検索"  width="135" height="70" class="btn" onclick="$('form').submit()" />
+? if (my $error = form->error_message('q')) {
+  <?= raw_string $error ?>
+? }
+</form>
 <!--/#formBox--></div>
 
 <div class="subCont" id="list">
