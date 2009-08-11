@@ -6,6 +6,12 @@ my $cache = {
     deref => 1,
 };
 
+my $database = [
+    'dbi:SQLite:' . $home->file('database.db'), undef, undef,
+    { unicode => 1 },
+];
+
 return {
-    cache => $cache,
+    cache    => $cache,
+    database => $database,
 };
