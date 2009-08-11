@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="Content-Language" content="ja" />
-<title>いなめなヶ崎</title>
+<title><? block 'title' => '' ?>いなめなヶ崎</title>
 <meta name="Description" content="あらゆるモノゴトにオチを" />
 <meta name="Keywords" content="いなめなヶ崎,否めない" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
