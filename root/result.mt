@@ -20,7 +20,10 @@
 
 <div class="subCont" id="detail">
 <h2><img src="/img/tit1.png" alt="検索結果" width="950" height="40" /></h2>
-<div class="ad" id="ad2"><!--/adsence-->ここにアドセンスはいる</div>
+<div class="ad" id="ad2">
+?= $self->render('common/adsense')
+<!--/adsence--></div>
+
 <ul class="blogTag">
   <li>
     <img src="/img/subtit_blog.png" alt="この結果をブログに張る" width="167" height="14" />
@@ -63,61 +66,29 @@
 <!--/#detail--></div>
 
 
-<div class="ad" id="ad3"><!--/adsence-->ここにアドセンスはいる</div>
+<div class="ad" id="ad3">
+?= $self->render('common/adsense')
+<!--/adsence--></div>
 
 
 <div id="amazon">
 
 <h2>“<strong><?= $result->{title} ?></strong>”に関連があるということは否めないアイテム</h2>
 
-<div class="amazonBox first">
-<ul class="amazonImage"><li><a href="アマゾンリンク" class="external"><img src="" alt="商品名" width="150" height="150" /></a></li>
+? my $i = 0;
+? for my $item (@{ $c->stash->{asamasi} || [] }) {
+<div class="amazonBox<?= $i++%3 == 0 ? ' first' : '' ?>">
+<ul class="amazonImage">
+  <li>
+    <a href="<?= $item->{link} ?>" class="external">
+      <img src="<?= $item->{image} || $c->uri_for('/img/comingsoon_books.gif') ?>" alt="<?= $item->{title} ?>" /></a>
+  </li>
 </ul>
-<h3><a href="アマゾンリンク" class="external">商品名</a></h3>
-<h4>著者名とか製造元名</h4>
-<p>価格：  	<strong>￥ 12,210 </strong></p>
+<h3><a href="<?= $item->{link} ?>" class="external"><?= $item->{title} ?></a></h3>
+<h4><?= $item->{author} || $item->{manufacturer} ?></h4>
+<p>価格：  	<strong><?= $item->{price} ?></strong></p>
 <!--/amazonBox--></div>
-
-<div class="amazonBox">
-<ul class="amazonImage"><li><a href="アマゾンリンク" class="external"><img src="" alt="商品名" width="150" height="150" /></a></li>
-</ul>
-<h3><a href="アマゾンリンク" class="external">商品名</a></h3>
-<h4>著者名とか製造元名</h4>
-<p>価格：  	<strong>￥ 12,210 </strong></p>
-<!--/amazonBox--></div>
-
-<div class="amazonBox">
-<ul class="amazonImage"><li><a href="アマゾンリンク" class="external"><img src="" alt="商品名" width="150" height="150" /></a></li>
-</ul>
-<h3><a href="アマゾンリンク" class="external">商品名</a></h3>
-<h4>著者名とか製造元名</h4>
-<p>価格：  	<strong>￥ 12,210 </strong></p>
-<!--/amazonBox--></div>
-
-<div class="amazonBox first">
-<ul class="amazonImage"><li><a href="アマゾンリンク" class="external"><img src="" alt="商品名" width="150" height="150" /></a></li>
-</ul>
-<h3><a href="アマゾンリンク" class="external">商品名</a></h3>
-<h4>著者名とか製造元名</h4>
-<p>価格：  	<strong>￥ 12,210 </strong></p>
-<!--/amazonBox--></div>
-
-<div class="amazonBox">
-<ul class="amazonImage"><li><a href="アマゾンリンク" class="external"><img src="" alt="商品名" width="150" height="150" /></a></li>
-</ul>
-<h3><a href="アマゾンリンク" class="external">商品名</a></h3>
-<h4>著者名とか製造元名</h4>
-<p>価格：  	<strong>￥ 12,210 </strong></p>
-<!--/amazonBox--></div>
-
-<div class="amazonBox">
-<ul class="amazonImage"><li><a href="アマゾンリンク" class="external"><img src="" alt="商品名" width="150" height="150" /></a></li>
-</ul>
-<h3><a href="アマゾンリンク" class="external">商品名</a></h3>
-<h4>著者名とか製造元名</h4>
-<p>価格：  	<strong>￥ 12,210 </strong></p>
-<!--/amazonBox--></div>
-
+? }
 <!--/amazon--></div>
 
 
@@ -126,5 +97,4 @@
 <hr />
 
 ? } # endblock content
-
 

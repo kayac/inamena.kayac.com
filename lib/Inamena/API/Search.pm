@@ -24,13 +24,15 @@ has cache => (
 sub search {
     my ($self, $keyword) = @_;
 
-    my $res = $self->cache->get($keyword);
+    my $cache_key = 'api::search::' . $keyword;
+
+    my $res = $self->cache->get($cache_key);
     return $res if $res;
 
     $res = $self->api({ keyword => $keyword, search => 1 });
     return unless $res && $res->nums;
 
-    $self->cache->set( $keyword => $res->[0] );
+    $self->cache->set( $cache_key => $res->[0] );
 
     $res->[0];
 }

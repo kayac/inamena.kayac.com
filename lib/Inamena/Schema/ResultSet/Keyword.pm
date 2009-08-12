@@ -4,7 +4,7 @@ use warnings;
 use base 'DBIx::Class::ResultSet';
 
 use List::Util 'shuffle';
-use WWW::CloudCreator;
+use HTML::TagCloud;
 
 sub top_keywords {
     my ($self, $attr) = @_;
@@ -18,24 +18,19 @@ sub top_keywords {
 sub top_keywords_cloud {
     my ($self, $attr) = @_;
 
-    my $cloud = WWW::CloudCreator->new(
-        smallest => 1,
-        largest  => 7,
-    );
+    my $cloud = HTML::TagCloud->new( levels => 6 );
 
-    my $count;
     my @keywords = shuffle $self->top_keywords($attr);
     for my $word (@keywords) {
-        $cloud->add($word->keyword, $word->count);
-        $count->{ $word->keyword } = $word->count;
+        $cloud->add($word->keyword, '', $word->count);
     }
 
     my @res;
-    for my $item ($cloud->gencloud) {
+    for my $item ($cloud->tags) {
         push @res, {
-            keyword => $item->[0],
-            weight  => $item->[1],
-            count   => $count->{ $item->[0] },
+            keyword => $item->{name},
+            weight  => $item->{level} + 1, # 1 - 7
+            count   => $item->{count},
         };
     }
 

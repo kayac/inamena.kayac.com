@@ -57,6 +57,8 @@ sub result :Path :Args(1) :Form('Inamena::Form::Comment') {
 
         $c->stash->{link}
             = qq!<a href="@{[ $c->uri_for('/', $name) ]}" target="_blank">${name}の否めないエピソード</a>!;
+
+        $c->stash->{asamasi} = models('API::Amazon')->search($res->{title});
     }
 }
 
