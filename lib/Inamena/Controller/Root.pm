@@ -20,7 +20,7 @@ sub error_handler :Private {
     $c->res->status(500);
     $c->view('MT')->template('errors/500');
 
-    $c->log( error => $c->error->[1] );
+    $c->log( error => $c->error->[-1] );
     $c->error([]);
 }
 
