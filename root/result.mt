@@ -20,9 +20,6 @@
 
 <div class="subCont" id="detail">
 <h2><img src="/img/tit1.png" alt="検索結果" width="950" height="40" /></h2>
-<div class="ad" id="ad2">
-?= $self->render('common/adsense')
-<!--/adsence--></div>
 
 <ul class="blogTag">
   <li>

@@ -19,10 +19,6 @@
 <div class="subCont" id="list">
 <h2><img src="/img/tit2.png" alt="いなめなリスト" width="950" height="40" /></h2>
 
-<div class="ad" id="ad2">
-?= $self->render('common/adsense')
-<!--/adsence--></div>
-
 <p>総キーワード：<strong><?= $c->stash->{counter}{keyword} ?></strong>件 / 総コメント：<strong><?= $c->stash->{counter}{comment} ?></strong>件</p>
 
 
