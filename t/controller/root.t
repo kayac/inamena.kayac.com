@@ -1,5 +1,7 @@
 use Inamena::Test;
 
+no utf8; # because $res->content should be utf8 bytes
+
 {
     # /default
     my $res = request GET => '/not_found_page';

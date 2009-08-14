@@ -19,7 +19,8 @@ requires 'WebService::SimpleAPI::Wikipedia';
 
 tests 't/*.t';
 
-build_requires 'Test::More';
+test_requires 'Test::More' => '0.88';
+
 use_test_base;
 
 auto_include;
