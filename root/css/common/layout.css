@@ -179,8 +179,13 @@ color:#000000;}
 div#detail ul.blogTag{
 text-align:right;}
 
+div#detail ul.blogTag li{ 
+display:inline; 
+padding-left:10px;} 
+
 div#detail ul.blogTag img{
-margin-right:10px;}
+margin-right:10px;
+vertical-align:middle;}
 
 div#detail ul.blogTag input{
 width:300px;

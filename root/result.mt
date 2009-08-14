@@ -26,6 +26,11 @@
     <img src="/img/subtit_blog.png" alt="この結果をブログに張る" width="167" height="14" />
     <input type="text" value="<?= $c->stash->{link} ?>" />
   </li>
+  <li>
+    <a href="<?= $s->{twitter_link} ?>" target="_blank">
+      <img src="/img/btn_twitter.png" alt="twitterに投稿する" width="144" height="27" class="btn" />
+    </a>
+  </li>
 </ul>
 
 <div id="detailBox">
@@ -48,6 +53,11 @@
   <li>
     <img src="/img/subtit_blog.png" alt="この結果をブログに張る" width="167" height="14" />
     <input type="text" value="<?= $c->stash->{link} ?>" />
+  </li>
+  <li>
+    <a href="<?= $s->{twitter_link} ?>" target="_blank">
+      <img src="/img/btn_twitter.png" alt="twitterに投稿する" width="144" height="27" class="btn" />
+    </a>
   </li>
 </ul>
 

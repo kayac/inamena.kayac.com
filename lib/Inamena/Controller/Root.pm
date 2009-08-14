@@ -58,6 +58,12 @@ sub result :Path :Args(1) :Form('Inamena::Form::Comment') {
         $c->stash->{link}
             = qq!<a href="@{[ $c->uri_for('/', $name) ]}" target="_blank">${name}の否めないエピソード</a>!;
 
+        $c->stash->{twitter_link} = URI->new('http://twitter.com/');
+        $c->stash->{twitter_link}->query_form(
+            status => "【いなめなヶ崎】${name}の否めないエピソード "
+                      . $c->uri_for('/', $name),
+        );
+
         $c->stash->{asamasi} = models('API::Amazon')->search($res->{title});
     }
 }
