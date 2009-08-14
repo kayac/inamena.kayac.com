@@ -18,7 +18,6 @@ __PACKAGE__->add_columns(
     keyword => { # keyword.id
         data_type         => 'INTEGER',
         is_nullable       => 0,
-        is_auto_increment => 1,
         extra => {
             unsigned => 1,
         },
