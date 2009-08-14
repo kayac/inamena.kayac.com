@@ -39,7 +39,7 @@ __PACKAGE__->add_columns(
 );
 
 __PACKAGE__->set_primary_key('id');
-__PACKAGE__->add_unique_constraint( keyword => ['keyword'] );
+__PACKAGE__->add_unique_constraint(['keyword']);
 
 __PACKAGE__->has_many( comments => 'Inamena::Schema::Result::Comment', 'keyword' );
 
