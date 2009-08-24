@@ -11,7 +11,7 @@ sub top_keywords {
 
     $self->search(
         { count => { '>', 0 } },
-        { rows => 20, order_by => 'count desc', %{ $attr || {} } },
+        { rows => 50, order_by => 'count desc', %{ $attr || {} } },
     );
 }
 

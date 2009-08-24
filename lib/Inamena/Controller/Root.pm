@@ -46,7 +46,6 @@ sub result :Path :Args(1) :Form('Inamena::Form::Comment') {
         };
         if ($@) {
             $self->log( error => $@ );
-            $c->detach;
         }
 
         $c->redirect_and_detach( $c->req->uri );
