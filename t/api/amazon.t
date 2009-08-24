@@ -47,4 +47,45 @@ isa_ok $api, 'Inamena::API::Amazon';
     ok $ua_called, 'mock ok';
 }
 
+{
+    # adult
+    models('cache')->clear;
+
+    my $safe = $api->search('うんこ');
+    my $safe_item = $safe->[0];
+
+    no strict 'refs';
+    no warnings 'redefine';
+    local *Inamena::API::Amazon::_parse_response = sub { # mock
+        my ($self, $response) = @_;
+        my $xml = $self->xml_parser->XMLin($response);
+
+        my @items;
+        for my $item (@{ $xml->{Items}{Item} || [] }) {
+#            next if $item->{ItemAttributes}{IsAdultProduct}; # adult filter
+
+            push @items, {
+                asin         => $item->{ASIN},
+                link         => $item->{DetailPageURL},
+                image        => $item->{ImageSets}{ImageSet}[0]{MediumImage}{URL} || '',
+                title        => $item->{ItemAttributes}{Title},
+                author       => join(', ', @{ $item->{ItemAttributes}{Author} || [] }),
+                manufacturer => $item->{ItemAttributes}{Manufacturer},
+                price        => $item->{ItemAttributes}{ListPrice}{FormattedPrice},
+                adult        => $item->{ItemAttributes}{IsAdultProduct},
+            };
+        }
+
+        \@items;
+    };
+
+    models('cache')->clear;
+
+    my $adult = $api->search('うんこ');
+    my $adult_item = $adult->[0];
+
+    is $adult_item->{adult}, 1, 'adult item';
+    isnt $safe_item->{asin}, $adult_item->{asin}, 'search return no adult content';
+}
+
 done_testing;

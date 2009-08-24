@@ -90,6 +90,21 @@ sub search {
         return $cached;
     }
 
+    my $res = $self->_request($keyword);
+
+    if ($res->is_success) {
+        my $obj = $self->_parse_response($res->content);
+        $self->cache->set( $cache_key => $obj );
+        return $obj;
+    }
+    else {
+        die $res->status_line;
+    }
+}
+
+sub _request {
+    my ($self, $keyword) = @_;
+
     my $u = URI::Amazon::APA->new($self->endpoint);
     $u->query_form(
         AssociateTag   => $self->associate_tag,
@@ -106,24 +121,17 @@ sub search {
         secret => $self->secret_key,
     );
 
-    my $res = $self->ua->request(HTTP::Request->new( GET => $u ));
-
-    if ($res->is_success) {
-        my $obj = $self->parse_response($res->content);
-        $self->cache->set( $cache_key => $obj );
-        return $obj;
-    }
-    else {
-        die $res->status_line;
-    }
+    $self->ua->request(HTTP::Request->new( GET => $u ));
 }
 
-sub parse_response {
+sub _parse_response {
     my ($self, $response) = @_;
     my $xml = $self->xml_parser->XMLin($response);
 
     my @items;
     for my $item (@{ $xml->{Items}{Item} || [] }) {
+        next if $item->{ItemAttributes}{IsAdultProduct}; # adult filter
+
         push @items, {
             asin         => $item->{ASIN},
             link         => $item->{DetailPageURL},
