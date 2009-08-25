@@ -145,7 +145,9 @@ div#list div.ad{
 padding:20px 0;}
 
 div#list p{
-font-size:124%;}
+font-size:124%;
+margin:10px 0 0;
+text-align:right;}
 
 div#list ul{
 line-height:1.8;}
@@ -168,6 +170,9 @@ div#list ul li.lvl6 a{
 font-size:154%;}
 div#list ul li.lvl7 a{
 font-size:185%;}
+
+div#listBox{
+padding:20px 0;}
 
 /* detail
 ------------------------------------------------- */
@@ -337,6 +342,13 @@ div.ad{}
 
 div#ad1{
 background-color:#CCF6F1;}
+
+div#ad3{
+padding:10px 0 0;
+text-align:center;}
+
+div#ad3 iframe{
+margin:0 auto;}
 
 
 /* ------------------------------------------------------------
