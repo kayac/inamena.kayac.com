@@ -182,7 +182,8 @@ color:#000000;}
 
 
 div#detail ul.blogTag{
-text-align:right;}
+text-align:right;
+margin:10px 0;}
 
 div#detail ul.blogTag li{
 display:inline;
@@ -212,13 +213,14 @@ div#detailBox p{
 line-height:1.8;}
 
 div#detailBox p.but{
-font-size:154%;
+font-size:250%;
 margin-bottom:0;
 padding-bottom:0;
 padding-top:20px;}
 
 ul#episode li{
 margin-left:20px;
+padding-top:20px;
 font-size:154%;
 font-weight:bold;}
 
@@ -256,7 +258,7 @@ border:1px solid #CBBDB4;
 float:left;
 margin-left:10px;
 margin-bottom:20px;
-height:160px;}
+height:170px;}
 
 div.amazonBox h3{
 padding-top:10px;
@@ -278,7 +280,7 @@ margin-left:0;}
 
 ul.amazonImage{
 float:left;
-width:150px;
+width:160px;
 margin:5px;}
 
 /* amazon
