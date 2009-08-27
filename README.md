@@ -4,14 +4,14 @@ Install [Ark](http://github.com/typester/ark-perl).
 
 Fetch source and install dependency.
 
-   git clone git://github.com/kayac/inamena.kayac.com.git
-   cd inamena.kayac.com
-   perl Makefile.PL
-   make installdeps
+    git clone git://github.com/kayac/inamena.kayac.com.git
+    cd inamena.kayac.com
+    perl Makefile.PL
+    make installdeps
 
 Create database
 
-   ./script/migrate.pl
+    ./script/migrate.pl
 
 Create your local config, and write it your amazon api info
 
