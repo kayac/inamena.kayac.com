@@ -222,7 +222,8 @@ ul#episode li{
 margin-left:20px;
 padding-top:20px;
 font-size:154%;
-font-weight:bold;}
+font-weight:bold;
+list-style-type:square;}
 
 /* addEpisode
 ------------------------------------------------- */
