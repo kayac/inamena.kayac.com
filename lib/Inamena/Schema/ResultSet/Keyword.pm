@@ -7,21 +7,36 @@ use List::Util 'shuffle';
 use HTML::TagCloud;
 
 sub top_keywords {
-    my ($self, $attr) = @_;
+    my ($self) = @_;
 
-    $self->search(
+    my @top = $self->search(
         { count => { '>', 0 } },
-        { rows => 50, order_by => 'count desc', %{ $attr || {} } },
+        {
+            rows     => 50,
+            order_by => 'count desc',
+        }
     );
+
+    my @recent = $self->search(
+        { count => { '>', 0 } },
+        {
+            rows     => 50,
+            order_by => 'updated_date desc',
+        }
+    );
+
+    return @top, @recent;
 }
 
 sub top_keywords_cloud {
-    my ($self, $attr) = @_;
+    my ($self) = @_;
 
     my $cloud = HTML::TagCloud->new( levels => 6 );
 
-    my @keywords = shuffle $self->top_keywords($attr);
+    my @keywords = shuffle $self->top_keywords;
+    my %seen;
     for my $word (@keywords) {
+        next if $seen{$word->id}++;
         $cloud->add($word->keyword, '', $word->count);
     }
 
