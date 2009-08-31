@@ -16,6 +16,7 @@ requires 'DateTime';
 requires 'DBIx::Class';
 requires 'HTML::TagCloud';
 requires 'WebService::SimpleAPI::Wikipedia';
+requires 'XML::Parser';
 
 tests 't/*.t';
 

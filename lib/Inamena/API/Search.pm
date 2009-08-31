@@ -29,6 +29,7 @@ sub search {
     my $res = $self->cache->get($cache_key);
     return $res if $res;
 
+    local $XML::Simple::PREFERRED_PARSER = 'XML::Parser';
     $res = $self->api({ keyword => $keyword, search => 1 });
     return unless $res && $res->nums;
 
