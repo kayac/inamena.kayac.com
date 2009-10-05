@@ -63,7 +63,13 @@ sub result :Path :Args(1) :Form('Inamena::Form::Comment') {
                       . $c->uri_for('/', $name),
         );
 
-        $c->stash->{asamasi} = models('API::Amazon')->search($res->{title});
+        eval {
+            $c->stash->{asamasi} = models('API::Amazon')->search($res->{title});
+        };
+        if ($@) {
+            $c->log( error => $@ );
+            $c->stash->{asamasi} ||= [];
+        }
     }
 }
 
